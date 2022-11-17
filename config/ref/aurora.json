@@ -5,7 +5,8 @@
   "routers": [
     { "dex": "trisolaris", "address": "0x2CB45Edb4517d5947aFdE3BEAbF95A582506858B" },
     { "dex": "wannaswap", "address": "0xa3a1ef5ae6561572023363862e238afa84c72ef5" },
-    { "dex": "auroraswap", "address": "0xA1B1742e9c32C7cAa9726d8204bD5715e3419861" }
+    { "dex": "auroraswap", "address": "0xA1B1742e9c32C7cAa9726d8204bD5715e3419861" },
+    { "dex": "rose", "address": "0xc90dB0d8713414d78523436dC347419164544A3f" }
   ],
   "baseAssets": [
     { "sym": "weth","address": "0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB" },

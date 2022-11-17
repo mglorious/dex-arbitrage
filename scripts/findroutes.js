@@ -68,12 +68,12 @@ const fetch = async () => {
         }
     }
     console.log(`✔  Good Routes: ${goodRoutes.length}`)
-    const sFileName = `./data/${network}_Good_Routes.txt`
+    const sFileName = `./data/${network}_gen_routes.txt`
     fs.writeFileSync(sFileName, `"routes": [\n`, function (err) { });
     for (i = 0; i < goodRoutes.length; i++) {
         var targetRoute = goodRoutes[i];
         fs.appendFileSync(sFileName, `["${targetRoute.router1}","${targetRoute.router2}","${targetRoute.token1}","${targetRoute.token2}"]`, function (err) { });
-        if (i != allRoutes.length - 1) {
+        if (i < allRoutes.length - 1) {
             fs.appendFileSync(sFileName, ",", function (err) { })
         }
         fs.appendFileSync(sFileName, "\n", function (err) { })
