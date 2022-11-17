@@ -26,6 +26,10 @@ Then to execute run:-
 npx hardhat run --network aurora .\scripts\fund.js
 ```
 
+```shell
+npx hardhat run --network aurora .\scripts\trade.js
+```
+
 Finally to recover any funds use the script.
 
 ```shell
