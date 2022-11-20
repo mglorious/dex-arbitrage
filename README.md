@@ -35,3 +35,10 @@ Finally to recover any funds use the script.
 ```shell
 npx hardhat run --network aurora .\scripts\recover.js
 ```
+
+
+## SSH launch and detach process
+screen
+launch Script
+ctrl+a d
+screen -r
