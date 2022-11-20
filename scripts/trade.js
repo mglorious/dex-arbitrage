@@ -153,6 +153,7 @@ const logResults = async () => {
     const diff = balances[asset.address].balance.sub(balances[asset.address].startBalance);
     const basisPoints = diff.mul(10000).div(balances[asset.address].startBalance);
     console.log(`✔ ${asset.sym}: ${basisPoints.toString()}bps`);
+    fs.appendFileSync(sFileName, `✔ ${asset.sym}: ${basisPoints.toString()}bps \n`);
   }
 }
 
