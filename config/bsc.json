@@ -1,5 +1,5 @@
 {
-    "arbContract": "changeit",
+    "arbContract": "0x95657f92151969fE7Afc22c8d4FE231530C57aFd",
     "minBasisPointsPerTrade": 888,
     "trade": true,
     "routers": [

@@ -18,11 +18,6 @@ const main = async () => {
   }
   await setup();
   await lookForDualTrade();
-  // Scale when using own node
-  //[0,0,0,0,0,0,0,0,0].forEach(async (v,i) => {
-  //  await new Promise(r => setTimeout(r, i*1000));
-  //  await lookForDualTrade();
-  //});
 }
 
 const searchForRoutes = () => {

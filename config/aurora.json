@@ -1,5 +1,5 @@
 {
-  "arbContract": "changit",
+  "arbContract": "0x64a50daC8239D04E40FC611897e22a4f6738dE3b",
   "minBasisPointsPerTrade": 8,
   "trade": true,
   "routers": [
