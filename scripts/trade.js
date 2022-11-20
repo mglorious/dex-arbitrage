@@ -6,7 +6,7 @@ let config, arb, owner, inTrade, balances;
 const network = hre.network.name;
 if (network === 'aurora') config = require('../config/aurora.json');
 if (network === 'fantom') config = require('./../config/fantom.json');
-if (network === 'aurora_test') config = require('./../config/aurora_test.json');
+if (network === 'bsc') config = require('../config/bsc.json');
 
 const main = async () => {
   console.log(`.oO(DEX Trader 🚀)`);
@@ -58,7 +58,7 @@ const lookForDualTrade = async () => {
   }
   try {
     let tradeSize = balances[targetRoute.token1].balance;
-    const amtBack = await arb.estimateDualDexTrade(targetRoute.router1, targetRoute.router2, targetRoute.token1, targetRoute.token2, tradeSize);
+    const amtBack = await arb.estimateDualDexTrade(targetRoute.router1, targetRoute.router2, targetRoute.token1, targetRoute.token2, tradeSize); //{ gasPrice: 5000000000, gasLimit: 1869316 }
     const multiplier = ethers.BigNumber.from(config.minBasisPointsPerTrade + 10000);
     const sizeMultiplied = tradeSize.mul(multiplier);
     const divider = ethers.BigNumber.from(10000);
@@ -94,7 +94,7 @@ const dualTrade = async (router1, router2, baseToken, token2, amount) => {
   try {
     inTrade = true;
     console.log('✔ Making dualTrade...');
-    const tx = await arb.connect(owner).dualDexTrade(router1, router2, baseToken, token2, amount); //{ gasPrice: 1000000000003, gasLimit: 500000 }
+    const tx = await arb.connect(owner).dualDexTrade(router1, router2, baseToken, token2, amount); //{ gasPrice: 5000000000, gasLimit: 1869316 }
     await tx.wait();
     inTrade = false;
     console.log('😎 First Step to be rich!');

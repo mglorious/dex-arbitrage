@@ -6,7 +6,7 @@ let config, arb, owner;
 const network = hre.network.name;
 if (network === 'aurora') config = require('../config/aurora.json');
 if (network === 'fantom') config = require('../config/fantom.json');
-if (network === 'aurora_test') config = require('../config/aurora_test.json');
+if (network === 'bsc') config = require('../config/bsc.json');
 
 const main = async () => {
 	[owner] = await ethers.getSigners();

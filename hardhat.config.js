@@ -13,6 +13,12 @@ module.exports = {
       gasPrice: "auto",
       gasMultiplier: 1
     },
+    bsc: {
+      url: `https://bsc-dataseed.binance.org`,
+      accounts: [process.env.privateKey],
+      gas: "auto",
+      gasPrice: "auto"
+    },
     fantom: {
       url: `https://rpc.ftm.tools/`,
       accounts: [process.env.privateKey],

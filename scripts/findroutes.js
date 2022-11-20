@@ -9,7 +9,7 @@ var goodRoutes = []
 const network = hre.network.name;
 if (network === 'aurora') config = require('../config/aurora.json');
 if (network === 'fantom') config = require('../config/fantom.json');
-if (network === 'aurora_test') config = require('../config/aurora_test.json');
+if (network === 'bsc') config = require('../config/bsc.json');
 
 
 const main = async () => {
@@ -58,7 +58,8 @@ const fetch = async () => {
         var targetRoute = allRoutes[i];
         //console.log(targetRoute);
         try {
-            let tradeSize = balances[targetRoute.token1].balance;
+            //let tradeSize = balances[targetRoute.token1].balance;
+            let tradeSize = 100
             await arb.estimateDualDexTrade(targetRoute.router1, targetRoute.router2, targetRoute.token1, targetRoute.token2, tradeSize, { gasPrice: 77777777, gasLimit: 1869316 });
             goodRoutes.push(targetRoute)
             console.log (i, '✔ Added')
