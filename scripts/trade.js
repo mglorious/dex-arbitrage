@@ -135,7 +135,7 @@ const setup = async () => {
 }
 
 const logResults = async () => {
-  const d = new Date("2015-03-25")
+  const d = new Date()
   
   fs.appendFileSync(sFileName, `${d} - 👀 Trading Overview \n`);
   fs.appendFileSync(sFileName, `✔ Global Count: ${globalCount}  \n`);
