@@ -3,18 +3,27 @@ const fs = require("fs");
 require("dotenv").config();
 
 let config, arb, owner, inTrade, balances;
-const network = hre.network.name;
+const network   = hre.network.name;
+const sFileName = `./logs/${network}_logs.txt`
+
 if (network === 'aurora') config = require('../config/aurora.json');
 if (network === 'fantom') config = require('./../config/fantom.json');
 if (network === 'bsc') config = require('../config/bsc.json');
 
 const main = async () => {
+  const d = new Date() 
+  fs.writeFileSync(sFileName, `${d} - .oO(DEX Trader 🚀) \n`);
+
+
   console.log(`.oO(DEX Trader 🚀)`);
   console.log(`✔ Network: ${network}`);
+  fs.appendFileSync(sFileName, `✔ Network: ${network} \n`);
   if (config.trade) {
     console.log(`✔ AutoTrading Activated!`);
+    fs.appendFileSync(sFileName, `✔ AutoTrading Activated! \n`);
   } else {
     console.log(`✔ WatchMode Activated!`);
+    fs.appendFileSync(sFileName, `✔ WatchMode Activated! \n`);
   }
   await setup();
   await lookForDualTrade();
@@ -126,6 +135,12 @@ const setup = async () => {
 }
 
 const logResults = async () => {
+  const d = new Date("2015-03-25")
+  
+  fs.appendFileSync(sFileName, `${d} - 👀 Trading Overview \n`);
+  fs.appendFileSync(sFileName, `✔ Global Count: ${globalCount}  \n`);
+  fs.appendFileSync(sFileName, `✔ Loop Count: ${goodCount} \n`);
+
   console.log(`👀 Trading Overview`);
   console.log(`✔ Global Count: ${globalCount}`);
   console.log(`✔ Loop Count: ${goodCount}`);
