@@ -70,7 +70,9 @@ const lookForDualTrade = async () => {
     if (!config.routes.length > 0) {
       fs.appendFile(`./data/${network}RouteLog.txt`, `["${targetRoute.router1}","${targetRoute.router2}","${targetRoute.token1}","${targetRoute.token2}"],` + "\n", function (err) { });
     }
-    //console.log (goodCount, ` ✨Profit: ${amtBack}`, `👌 Target: ${profitTarget}`)
+    if (!config.trade) {
+      console.log (goodCount, ` ✨Profit: ${amtBack}`, `👌 Target: ${profitTarget}`)
+    }
     if (amtBack.gt(profitTarget)) {
       if (config.trade) {
         await dualTrade(targetRoute.router1, targetRoute.router2, targetRoute.token1, targetRoute.token2, tradeSize);
