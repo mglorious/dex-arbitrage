@@ -60,9 +60,13 @@ const fetch = async () => {
         try {
             //let tradeSize = balances[targetRoute.token1].balance;
             let tradeSize = 100
-            await arb.estimateDualDexTrade(targetRoute.router1, targetRoute.router2, targetRoute.token1, targetRoute.token2, tradeSize, { gasPrice: 77777777, gasLimit: 1869316 });
-            goodRoutes.push(targetRoute)
-            console.log (i, '✔ Added')
+            let profit = await arb.estimateDualDexTrade(targetRoute.router1, targetRoute.router2, targetRoute.token1, targetRoute.token2, tradeSize, { gasPrice: 77777777, gasLimit: 1869316 });
+            if (profit > 0) {
+                goodRoutes.push(targetRoute)
+                console.log (i, '✔ Added')
+            }else {
+                console.log (i, '😒 0 Profit') 
+            }
         } catch (e) {
             //console.log(`✖ ${targetRoute} Filtred as Bad Route !`);
             //console.log(e)
