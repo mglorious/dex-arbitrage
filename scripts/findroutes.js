@@ -28,9 +28,11 @@ const setup = async () => {
 
     for (var i = 0; i < config.routers.length; i++) {
         for (var j = 0; j < config.routers.length; j++) {
-            for (var k = 0; k < config.baseAssets.length; k++) {
-                for (var l = 0; l < config.tokens.length; l++) {
-                    allRoutes.push(searchRoutes(i, j, k, l))
+            if (i != j) {
+                for (var k = 0; k < config.baseAssets.length; k++) {
+                    for (var l = 0; l < config.tokens.length; l++) {
+                        allRoutes.push(searchRoutes(i, j, k, l))
+                    }
                 }
             }
         }
@@ -56,16 +58,19 @@ const fetch = async () => {
     }
     for (var i = 0; i < allRoutes.length; i++) {
         var targetRoute = allRoutes[i];
-        //console.log(targetRoute);
         try {
-            //let tradeSize = balances[targetRoute.token1].balance;
-            let tradeSize = 100
-            let profit = await arb.estimateDualDexTrade(targetRoute.router1, targetRoute.router2, targetRoute.token1, targetRoute.token2, tradeSize, { gasPrice: 77777777, gasLimit: 1869316 });
-            if (profit > 0) {
-                goodRoutes.push(targetRoute)
-                console.log (i, '✔ Added')
-            }else {
-                console.log (i, '😒 0 Profit') 
+            if (targetRoute.router1 === targetRoute.router2) {
+                console.log("🤷‍♀️ Same Route")
+            } else {
+                let tradeSize = balances[targetRoute.token1].balance;
+                //let tradeSize = 23482707733535552314
+                let profit = await arb.estimateDualDexTrade(targetRoute.router1, targetRoute.router2, targetRoute.token1, targetRoute.token2, tradeSize);
+                if (profit > 0) {
+                    goodRoutes.push(targetRoute)
+                    console.log(i, '✔ Added')
+                } else {
+                    console.log(i, '😒 0 Profit')
+                }
             }
         } catch (e) {
             //console.log(`✖ ${targetRoute} Filtred as Bad Route !`);
